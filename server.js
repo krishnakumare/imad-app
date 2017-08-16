@@ -4,19 +4,42 @@ var path = require('path');
 
 var app = express();
 app.use(morgan('combined'));
-var articleOne ={
-  title:'Article one | krishna',
-  heading:'Article one',
-  date: 'Aug 16,2017',
-  contents:`   
-            <p>
-                This article one in IMAD course and practice session.This article one in IMAD course and practice sessionThis article one in IMAD course and practice sessionThis article one in IMAD course and practice sessionThis article one in IMAD course and practice session
-                
-            </p>
-             <p>
-                This article one in IMAD course and practice session.This article one in IMAD course and practice sessionThis article one in IMAD course and practice sessionThis article one in IMAD course and practice sessionThis article one in IMAD course and practice session
-                
-            </p>`
+var articles ={
+    'article-one': {
+      title:'Article one | krishna',
+      heading:'Article one',
+      date: 'Aug 16,2017',
+      contents:`   
+                <p>
+                    This article one in IMAD course and practice session.This article one in IMAD course and practice sessionThis article one in IMAD course and practice sessionThis article one in IMAD course and practice sessionThis article one in IMAD course and practice session
+                    
+                </p>
+                 <p>
+                    This article one in IMAD course and practice session.This article one in IMAD course and practice sessionThis article one in IMAD course and practice sessionThis article one in IMAD course and practice sessionThis article one in IMAD course and practice session
+                    
+                </p>`
+    },
+    'article-two':{
+          title:'Article two | krishna',
+          heading:'Article two',
+          date: 'Aug 16,2017',
+          contents:`   
+                     <p>
+                        This article two in IMAD course and practice session.
+                        
+                    </p>`
+    },
+    'article-three': {
+          title:'Article three | krishna',
+          heading:'Article three',
+          date: 'Aug 16,2017',
+          contents:`   
+                     <p>
+                        This article three in IMAD course and practice session.
+                        
+                    </p>`
+    }
+    
 };
 function createTemplate(data){
         var title = data.title;
@@ -60,8 +83,9 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/article-one', function (req, res) {
-   res.send(createTemplate(articleOne));
+app.get('/:articleName', function (req, res) {
+   var articlename = req.params.articleName;
+   res.send(createTemplate(articles[articleName]));
 });
 
 app.get('/article-two', function (req, res) {
