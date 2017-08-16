@@ -6,10 +6,10 @@ console.log('Loaded!');
  // move Image
  
 var img= document.getElementById('madi');
-var marginLeft =0;
-function moveRight(){
+var marginLeft = 0;
+function moveRight() {
      marginLeft = marginleft + 10;
-     img.style.marginleft =marginLeft +'px';
+     img.style.marginleft = marginLeft +'px';
  }
  
  img.onclick = function()
