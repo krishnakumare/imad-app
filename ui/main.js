@@ -16,5 +16,7 @@ button.onclick = function(){
       }  
     };
    
-   // sender the variable is the correct span
+   // make the request
+   request.open('GET','http://krishnae019.imad.hasura-app.io/counter',true);
+   request.send(null);
 }; 
